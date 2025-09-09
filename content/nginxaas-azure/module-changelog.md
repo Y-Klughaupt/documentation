@@ -8,6 +8,29 @@ url: /nginxaas/azure/module-changelog/
 Learn about the modules supported by the latest versions of F5 NGINX as a Service for Azure.
 
 
+## Accessing Module Versions via Dataplane API:
+
+To access available module versions from the dataplane API, follow these steps:
+- View Your API Endpoints and Create an API Key
+  - Follow the [Getting Started instructions](https://docs.nginx.com/nginxaas/azure/loadbalancer-kubernetes/#getting-started) to locate your dataplane API endpoint and create an API key
+
+- Construct the Request URL
+   - Add `/packages` to your dataplane API endpoint.
+   - Example: `https://<your-endpoint>/packages`
+
+- Authenticate API Requests
+   - Base64 encode your API key and add prefix `ApiKey` to the encoded string.
+   - Set the `Authorization` HTTP header to:  
+     `ApiKey <your_api_key>`
+
+- Query Module Versions
+
+```bash
+   curl -H "Authorization: ApiKey <your_api_key>" https://<your-endpoint>/packages
+```
+
+
+
 ## July 03, 2025 
 
 ### Stable
